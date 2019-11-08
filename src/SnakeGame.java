@@ -18,18 +18,27 @@ public class SnakeGame extends Application {
 
         // Create Panes
         final SnakePane snakePane = new SnakePane(snake, apple, MENU_SIZE);
-        snakePane.setDefaultBoard();
+        final MenuPane menuPane = new MenuPane(MENU_SIZE);
+        final OptionPane optionPane = new OptionPane(MENU_SIZE);
 
-        // Make the GUI not resizable, set the title, and icon
+        // Initialize the event handlers for buttons/other user input
+        menuPane.defineButtonActions(stage, optionPane);
+        optionPane.defineButtonActions(stage, menuPane, snakePane);
+        
+        // Set the GUI's size, Make the GUI not resizable, set the GUI's title, and GUI's icon
+        stage.setWidth(MENU_SIZE);
+        stage.setHeight(MENU_SIZE);
         stage.setResizable(false);
         stage.setTitle("Snake Game");
         stage.getIcons().add(new Image("SnakeIcon.png"));
         
         // Set the initial Scene and show the GUI
-        stage.setScene(snakePane.getSnakePaneScene());
+        stage.setScene(menuPane.getMenuPaneScene());
         stage.show();
 
-        snakePane.startGame();
+        // Temporary
+//        snakePane.setDefaultBoard();
+//        snakePane.startGame();
     }
 
 }
