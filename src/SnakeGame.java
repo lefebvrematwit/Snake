@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -19,11 +20,15 @@ public class SnakeGame extends Application {
         final SnakePane snakePane = new SnakePane(snake, apple, MENU_SIZE);
         snakePane.setDefaultBoard();
 
-        // Set the initial Scene, make resizing not allowed, and show the GUI
-        stage.setScene(snakePane.getSnakePaneScene());
+        // Make the GUI not resizable, set the title, and icon
         stage.setResizable(false);
+        stage.setTitle("Snake Game");
+        stage.getIcons().add(new Image("SnakeIcon.png"));
+        
+        // Set the initial Scene and show the GUI
+        stage.setScene(snakePane.getSnakePaneScene());
         stage.show();
-// test
+
         snakePane.startGame();
     }
 

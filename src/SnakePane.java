@@ -64,10 +64,13 @@ public class SnakePane extends GridPane {
         final VBox root = new VBox();
         root.setStyle("-fx-background-color: BLACK;");
         root.setFillWidth(true);
-        root.setAlignment(Pos.CENTER);
 
         // Add the score label and the game pane to the root HBox
-        root.getChildren().add(scoreLabel);
+        final VBox upper = new VBox();
+        upper.setStyle("-fx-background-color: WHITE");
+        upper.getChildren().add(scoreLabel);
+        upper.setAlignment(Pos.CENTER);
+        root.getChildren().add(upper);
         root.getChildren().add(this);
 
         // Create the Scene and define the EventHandler for key press actions
