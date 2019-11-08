@@ -23,7 +23,7 @@ public class SnakeGame extends Application {
         stage.setScene(snakePane.getSnakePaneScene());
         stage.setResizable(false);
         stage.show();
-
+// test
         snakePane.startGame();
     }
 
