@@ -36,9 +36,6 @@ public class SnakeGame extends Application {
         stage.setScene(menuPane.getMenuPaneScene());
         stage.show();
 
-        // Temporary
-//        snakePane.setDefaultBoard();
-//        snakePane.startGame();
     }
 
 }
