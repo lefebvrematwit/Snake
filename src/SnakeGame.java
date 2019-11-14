@@ -20,6 +20,7 @@ public class SnakeGame extends Application {
         final SnakePane snakePane = new SnakePane(snake, apple, MENU_SIZE);
         final MenuPane menuPane = new MenuPane(MENU_SIZE);
         final OptionPane optionPane = new OptionPane(MENU_SIZE);
+       
 
         // Initialize the event handlers for buttons/other user input
         menuPane.defineButtonActions(stage, optionPane);
