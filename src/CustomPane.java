@@ -66,11 +66,11 @@ public class CustomPane {
 	
 	// Initialize the Scene for this menu
 	private Scene initializeScene() {
-		final Text colorText = new Text("Placeholder");
+		final Text colorText = new Text("Snake Color");
 		colorText.setStyle("-fx-font: 24 arial;");
 		colorText.setFill(Color.DARKGREEN);
 		
-		final Text sizeText = new Text("Placeholder");
+		final Text sizeText = new Text("Board Size");
 		sizeText.setStyle("-fx-font: 24 arial;");
 		sizeText.setFill(Color.DARKGREEN);
 		
