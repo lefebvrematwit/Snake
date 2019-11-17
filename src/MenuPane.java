@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
@@ -26,6 +27,7 @@ public class MenuPane {
 
 	private Scene initializeScene() {
 		final VBox menu = new VBox(title, play, score, about);
+		menu.setStyle("-fx-background-color: BLACK;");
 		menu.setAlignment(Pos.CENTER);
 		
 		menu.setSpacing(40);
@@ -37,7 +39,8 @@ public class MenuPane {
 	private Label initializeTitle() {
 		final Label label = new Label();
 		label.setText("Snake");
-		label.setStyle("-fx-font: 24 arial;");
+		label.setStyle("-fx-font: 64 arial;");
+		label.setTextFill(Color.DARKGREEN);
 		label.setTextAlignment(TextAlignment.CENTER);
 		
 		return label;
@@ -45,23 +48,32 @@ public class MenuPane {
 	
 	private Button initializePlayButton() {
 		final Button button = new Button("Play");
+		button.setStyle("-fx-border-color: GREEN;");
+		button.setTextFill(Color.DARKGREEN);
+		button.setPrefSize(250, 50);
 		
 		return button;
 	}
 	
 	private Button initializeScoreButton() {
 		final Button button = new Button("High Scores");
+		button.setStyle("-fx-border-color: GREEN;");
+		button.setTextFill(Color.DARKGREEN);
+		button.setPrefSize(250, 50);
 		
 		return button;
 	}
 	
 	private Button initializeAboutButton() {
 		final Button button = new Button("About");
+		button.setStyle("-fx-border-color: GREEN;");
+		button.setTextFill(Color.DARKGREEN);
+		button.setPrefSize(250, 50);
 		
 		return button;
 	}
 	
-	public void defineButtonActions(Stage stage, OptionPane optionPane) {
+	public void defineButtonActions(Stage stage, OptionPane optionPane, AboutPane aboutPane) {
 		play.setOnAction(event -> {
 			stage.setScene(optionPane.getOptionPaneScene());
 		});
@@ -70,9 +82,7 @@ public class MenuPane {
 				
 		});
 		
-		about.setOnAction(event -> {
-				
-		});
+		about.setOnAction(event -> stage.setScene(aboutPane.getAboutPaneScene()));
 	}
 	
 	public Scene getMenuPaneScene() {
