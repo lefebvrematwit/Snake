@@ -21,7 +21,7 @@ public class AboutPane {
 	}
 	
 	private Text initializeText() {
-		final Text text = new Text("Placeholder");
+		final Text text = new Text("Made by: Matt Lefevbre, Rodney Chan, and Miranda Manzi");
 		text.setStyle("-fx-font: 24 arial;");
 		text.setFill(Color.DARKGREEN);
 		

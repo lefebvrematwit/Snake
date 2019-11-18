@@ -9,7 +9,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+/**
+ * Customize snake game before playing
+ * @author chanr1
+ *
+ */
 public class CustomPane {
 	private final int menuSize;
 	private final ColorPicker colorPicker;

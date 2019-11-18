@@ -79,6 +79,8 @@ public class MenuPane {
 		});
 		
 		score.setOnAction(event -> {
+			
+			
 				
 		});
 		

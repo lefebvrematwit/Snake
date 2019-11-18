@@ -23,6 +23,7 @@ public class SnakeGame extends Application {
         final OptionPane optionPane = new OptionPane(MENU_SIZE);
         final CustomPane customPane = new CustomPane(MENU_SIZE);
         final AboutPane aboutPane = new AboutPane(MENU_SIZE);
+        HighScore high = new HighScore(MENU_SIZE,snake.getPoints());//added this
 
         // Initialize the event handlers for buttons/other user input
         menuPane.defineButtonActions(stage, optionPane, aboutPane);
