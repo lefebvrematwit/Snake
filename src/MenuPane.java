@@ -38,8 +38,8 @@ public class MenuPane {
 	
 	private Label initializeTitle() {
 		final Label label = new Label();
-		label.setText("Snake");
-		label.setStyle("-fx-font: 64 arial;");
+		label.setText("SNAKE");
+		label.setStyle("-fx-font: 64 arial; -fx-font-weight: bold;");
 		label.setTextFill(Color.DARKGREEN);
 		label.setTextAlignment(TextAlignment.CENTER);
 		

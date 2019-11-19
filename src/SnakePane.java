@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.HashMap;
@@ -31,10 +32,14 @@ public class SnakePane extends GridPane {
     private final Label scoreLabel; // the score label object
     private final Scene gameScene; // the scene containing the score label and the game grid
     private final Timeline timeline; // the timeline which acts as the game loop
+    private final Stage stage; // reference to the Application Stage
+    private final GameOverPane gameOverPane; // reference to the pane which will be set when the player loses 
     private int rows; // the number of rows on the board
 
-    public SnakePane(Snake snake, Apple apple, int menuSize) {
-        this.snake = snake;
+    public SnakePane(Stage stage, GameOverPane gameOverPane, Snake snake, Apple apple, int menuSize) {
+        this.stage = stage;
+    	this.gameOverPane = gameOverPane;
+    	this.snake = snake;
         this.apple = apple;
         this.menuSize = menuSize;
         this.board = new HashMap<>();
@@ -130,6 +135,9 @@ public class SnakePane extends GridPane {
 
     // Sets the game board (rows x rows)
     public void setBoard(int rows) {
+    	// Reset the board
+    	reset();
+    	
         // Update this objects rows field
         this.rows = rows;
 
@@ -151,8 +159,9 @@ public class SnakePane extends GridPane {
         snake.addCoordinate(new Coordinate(rows / 2, rows / 2));
         apple.setCoordinate(getEmptyCoordinate());
 
-        // Update the board
+        // Update the board and the score label
         update();
+        updateScore();
     }
 
     // Sets the default game board (25 x 25)
@@ -184,6 +193,7 @@ public class SnakePane extends GridPane {
     // Ends the game
     private void endGame() {
         timeline.stop();
+        stage.setScene(gameOverPane.getGameOverScene());
     }
 
     // Checks if a Coordinate is on the game board
@@ -202,7 +212,7 @@ public class SnakePane extends GridPane {
         // Repaint the apples location
         getBoardPiece(apple.getCoordinate()).setFill(apple.getColor());
     }
-
+    
     private void updateScore() {
         this.scoreLabel.setText(formatScore());
     }
@@ -224,4 +234,11 @@ public class SnakePane extends GridPane {
         return getBoardPiece(coordinate).getFill().equals(apple.getColor());
     }
 
+    private void reset() {
+    	snake.reset();
+    	apple.reset();
+    	this.board.clear();
+    	super.getChildren().clear();
+    }
+    
 }

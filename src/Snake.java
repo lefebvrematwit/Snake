@@ -148,6 +148,8 @@ public class Snake extends GameNode {
     public void reset() {
         this.setPoints(0);
         this.coordinates.clear();
+        this.color = Color.GREEN;
+        this.direction = Direction.UP;
     }
 
 }
