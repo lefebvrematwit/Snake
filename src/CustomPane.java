@@ -36,7 +36,6 @@ public class CustomPane {
 	//Initialize Snake ColorPicker
 	private ColorPicker initializeColorPicker(){
 		final ColorPicker colorPicker = new ColorPicker();
-		colorPicker.getStyleClass().add("color");
 		
 		return colorPicker;
 	}
@@ -60,7 +59,7 @@ public class CustomPane {
 	
 	// Initialize Back Button
 	private Button initializeBackButton() {
-		final Button button = new Button("back");
+		final Button button = new Button("Back");
 		button.setStyle("-fx-border-color: GREEN;");
 		button.setTextFill(Color.DARKGREEN);
 		button.setPrefSize(250, 50);

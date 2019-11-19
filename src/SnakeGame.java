@@ -1,5 +1,4 @@
 import javafx.application.Application;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -23,13 +22,14 @@ public class SnakeGame extends Application {
         final OptionPane optionPane = new OptionPane(MENU_SIZE);
         final CustomPane customPane = new CustomPane(MENU_SIZE);
         final AboutPane aboutPane = new AboutPane(MENU_SIZE);
-        HighScore high = new HighScore(MENU_SIZE,snake.getPoints());//added this
+        final ScorePane scorePane = new ScorePane(MENU_SIZE);
 
         // Initialize the event handlers for buttons/other user input
-        menuPane.defineButtonActions(stage, optionPane, aboutPane);
+        menuPane.defineButtonActions(stage, optionPane, scorePane, aboutPane);
         optionPane.defineButtonActions(stage, menuPane, snakePane, customPane);
         customPane.defineButtonActions(stage, snake, snakePane, optionPane);
         aboutPane.defineButtonActions(stage, menuPane);
+        scorePane.defineButtonActions(stage, menuPane);
         
         // Set the GUI's size, Make the GUI not resizable, set the GUI's title, and GUI's icon
         stage.setWidth(MENU_SIZE);

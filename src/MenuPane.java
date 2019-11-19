@@ -73,16 +73,10 @@ public class MenuPane {
 		return button;
 	}
 	
-	public void defineButtonActions(Stage stage, OptionPane optionPane, AboutPane aboutPane) {
-		play.setOnAction(event -> {
-			stage.setScene(optionPane.getOptionPaneScene());
-		});
+	public void defineButtonActions(Stage stage, OptionPane optionPane, ScorePane scorePane, AboutPane aboutPane) {
+		play.setOnAction(event -> stage.setScene(optionPane.getOptionPaneScene()));
 		
-		score.setOnAction(event -> {
-			
-			
-				
-		});
+		score.setOnAction(event -> stage.setScene(scorePane.getHighScoreScene()));
 		
 		about.setOnAction(event -> stage.setScene(aboutPane.getAboutPaneScene()));
 	}
