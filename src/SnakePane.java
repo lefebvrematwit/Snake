@@ -200,14 +200,6 @@ public class SnakePane extends GridPane {
     private void endGame() {//added here
     	
         timeline.stop();
-        try {
-			PrintWriter fr = new PrintWriter("HighScore.txt");//added here
-			fr.println(snake.getPoints());
-			fr.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         stage.setScene(gameOverPane.getGameOverScene());
     }
 

@@ -28,12 +28,14 @@ public class ScorePane {
 	private final Scene scene;
 	
 	
+	
 	ScorePane(int menuSize) {
 		
 		this.menuSize = menuSize;
 		this.back = initializeButton();
 		this.text = initializeText();
 		this.scene = initializeScene();
+		
 	}
 	
 	/**

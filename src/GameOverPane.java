@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,15 +14,26 @@ public class GameOverPane {
 	private final int menuSize;
 	private final Button playAgain;
 	private final Button highScores;
+	private final Button getScore;
 	private final Button back;
 	private final Scene scene;
+	
 	
 	public GameOverPane(int menuSize) {
 		this.menuSize = menuSize;
 		this.playAgain = initializePlayAgainButton();
+		this.getScore = initializeGetScore();
 		this.back = initializeBackButton();
 		this.highScores = initializeHighScoresButton();
 		this.scene = initializeScene();
+	}
+	private Button initializeGetScore() {
+		final Button button = new Button("Record Score");
+		button.setStyle("-fx-border-color: GREEN;");
+		button.setTextFill(Color.DARKGREEN);
+		button.setPrefSize(250, 50);
+		
+		return button;
 	}
 
 	private Button initializePlayAgainButton() {
@@ -54,7 +68,7 @@ public class GameOverPane {
 		text.setStyle("-fx-font: 64 arial; -fx-font-weight: bold;");
 		text.setFill(Color.DARKGREEN);
 		
-		final VBox root = new VBox(text, playAgain, highScores, back);
+		final VBox root = new VBox(text, playAgain,getScore, highScores, back);
 		root.setStyle("-fx-background-color: BLACK;");
 		root.setAlignment(Pos.CENTER);
 		root.setSpacing(40);
@@ -62,7 +76,7 @@ public class GameOverPane {
 		return new Scene(root, menuSize, menuSize);
 	}
 	
-	public void defineButtonActions(Stage stage, MenuPane menuPane, ScorePane scorePane, SnakePane snakePane) {
+	public void defineButtonActions(Stage stage, MenuPane menuPane, ScorePane scorePane, SnakePane snakePane, Snake snake) {
 		playAgain.setOnAction(event -> {
 			
 		});
@@ -70,6 +84,19 @@ public class GameOverPane {
 		highScores.setOnAction(event -> stage.setScene(scorePane.getHighScoreScene()));
 		
 		back.setOnAction(event -> stage.setScene(menuPane.getMenuPaneScene()));
+		
+		getScore.setOnAction(event -> {
+			 try {
+					PrintWriter fr = new PrintWriter("HighScore.txt");//added here
+					fr.println(snake.getPoints());
+					fr.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+		});
+		
 	}
 	
 	public Scene getGameOverScene() {

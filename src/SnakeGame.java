@@ -32,7 +32,7 @@ public class SnakeGame extends Application {
         customPane.defineButtonActions(stage, snake, snakePane, optionPane);
         aboutPane.defineButtonActions(stage, menuPane);
         scorePane.defineButtonActions(stage, menuPane);
-        gameOverPane.defineButtonActions(stage, menuPane, scorePane, snakePane);
+        gameOverPane.defineButtonActions(stage, menuPane, scorePane, snakePane,snake);
         
         
         // Set the GUI's size, Make the GUI not resizable, set the GUI's title, and GUI's icon
