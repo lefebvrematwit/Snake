@@ -143,6 +143,7 @@ public class Snake extends GameNode {
             this.points += ((PointObject) node).getValue();
         }
     }
+    
 
     @Override
     public void reset() {

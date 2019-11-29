@@ -13,6 +13,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -36,6 +38,7 @@ public class SnakePane extends GridPane {
     private final GameOverPane gameOverPane; // reference to the pane which will be set when the player loses 
     private int rows; // the number of rows on the board
 
+
     public SnakePane(Stage stage, GameOverPane gameOverPane, Snake snake, Apple apple, int menuSize) {
         this.stage = stage;
     	this.gameOverPane = gameOverPane;
@@ -46,8 +49,11 @@ public class SnakePane extends GridPane {
         this.scoreLabel = initializeScoreLabel();
         this.timeline = initializeTimeline();
         this.gameScene = initializeScene();
+       
     }
 
+    
+    
     // Formats the score label
     private String formatScore() {
         return String.format(SCORE_FORMAT, this.snake.getPoints());
@@ -191,8 +197,17 @@ public class SnakePane extends GridPane {
     }
 
     // Ends the game
-    private void endGame() {
+    private void endGame() {//added here
+    	
         timeline.stop();
+        try {
+			PrintWriter fr = new PrintWriter("HighScore.txt");//added here
+			fr.println(snake.getPoints());
+			fr.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         stage.setScene(gameOverPane.getGameOverScene());
     }
 
