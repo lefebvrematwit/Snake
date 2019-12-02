@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -100,15 +101,18 @@ public class ScorePane {
 	 * checks highest score
 	 */
 	public Integer checkText(LinkedList <Integer> b){
-		Integer highscore = 0;
-		for(Integer i : b)
+		
+		for(int i = 0; i < b.size(); i ++)
 		{
-			if (i > highscore)
+			int right = b.get(i + 1);
+			int left = b.get(i);
+			if (b.get(i) > b.get(i+1))
 			{
-				highscore = i;
+				left = right;
+				right = left;
 			}
 		}
-		return highscore;
+		return 0;
 		
 	
 	}
