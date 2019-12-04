@@ -37,7 +37,9 @@ public class SnakePane extends GridPane {
     private final Stage stage; // reference to the Application Stage
     private final GameOverPane gameOverPane; // reference to the pane which will be set when the player loses 
     private int rows; // the number of rows on the board
-
+    // USED FOR THE PLAY AGAIN FEATURE
+    private Color previousSnakeColor; // The color of the snake from the previous game
+    private int previousBoardSize; // The size of the board from the previous game
 
     public SnakePane(Stage stage, GameOverPane gameOverPane, Snake snake, Apple apple, int menuSize) {
         this.stage = stage;
@@ -51,9 +53,7 @@ public class SnakePane extends GridPane {
         this.gameScene = initializeScene();
        
     }
-
-    
-    
+   
     // Formats the score label
     private String formatScore() {
         return String.format(SCORE_FORMAT, this.snake.getPoints());
@@ -141,6 +141,10 @@ public class SnakePane extends GridPane {
 
     // Sets the game board (rows x rows)
     public void setBoard(int rows) {
+        // Set the previous fields for the snakes color/board size (note: this is done before resetting GameNodes and the board)
+        this.previousSnakeColor = snake.getColor();
+        this.previousBoardSize = rows;
+  
     	// Reset the board
     	reset();
     	
@@ -175,6 +179,12 @@ public class SnakePane extends GridPane {
         setBoard(DEFAULT_ROWS);
     }
 
+    // Used for the play again feature, sets the snakes color and the board size to the previous values
+    public void setPreviousBoard() {
+    	setBoard(this.previousBoardSize);
+    	snake.setColor(this.previousSnakeColor);
+    }
+    
     // Finds an empty coordinate on the board
     private Coordinate getEmptyCoordinate() {
         while (true) {
@@ -197,8 +207,7 @@ public class SnakePane extends GridPane {
     }
 
     // Ends the game
-    private void endGame() {//added here
-    	
+    private void endGame() {	
         timeline.stop();
         stage.setScene(gameOverPane.getGameOverScene());
     }

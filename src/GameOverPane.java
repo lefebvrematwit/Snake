@@ -78,7 +78,9 @@ public class GameOverPane {
 	
 	public void defineButtonActions(Stage stage, MenuPane menuPane, ScorePane scorePane, SnakePane snakePane, Snake snake) {
 		playAgain.setOnAction(event -> {
-			
+			snakePane.setPreviousBoard();
+			stage.setScene(snakePane.getSnakePaneScene());
+			snakePane.startGame();
 		});
 		
 		highScores.setOnAction(event -> stage.setScene(scorePane.getHighScoreScene()));
@@ -94,7 +96,6 @@ public class GameOverPane {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			
 		});
 		
 	}
