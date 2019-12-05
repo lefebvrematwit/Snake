@@ -1,6 +1,5 @@
 /**
- * GameNode abstract class that extends Node. GameNodes are very similar to nodes except they have a required method
- * that is invoked when two nodes "meet" on a Scene
+ * GameNode class representing a Node associated with the snake game
  * @author Matt Lefebvre
  */
 public abstract class GameNode {
