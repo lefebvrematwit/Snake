@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -73,10 +75,13 @@ public class MenuPane {
 		return button;
 	}
 	
-	public void defineButtonActions(Stage stage, OptionPane optionPane, ScorePane scorePane, AboutPane aboutPane) {
+	public void defineButtonActions(Stage stage, OptionPane optionPane, ScorePane scorePane, AboutPane aboutPane, LinkedList<Score> scoresList) {
 		play.setOnAction(event -> stage.setScene(optionPane.getOptionPaneScene()));
 		
-		score.setOnAction(event -> stage.setScene(scorePane.getHighScoreScene()));
+		score.setOnAction(event -> {
+			scorePane.displayHighScores(scoresList);
+			stage.setScene(scorePane.getHighScoreScene());
+		});
 		
 		about.setOnAction(event -> stage.setScene(aboutPane.getAboutPaneScene()));
 	}

@@ -1,19 +1,14 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -25,25 +20,20 @@ import javafx.stage.Stage;
 public class ScorePane {
 	private final int menuSize;
 	private final Button back;
+	private final Label label;
 	private final Text text;
 	private final Scene scene;
 	
 	
 	
 	ScorePane(int menuSize) {
-		
 		this.menuSize = menuSize;
 		this.back = initializeButton();
 		this.text = initializeText();
+		this.label = initializeLabel();
 		this.scene = initializeScene();
-		
 	}
 	
-	/**
-	 * 
-	 * back button to return to main menu
-	 */
-
 	private Button initializeButton() {
 		final Button button = new Button("Back");
 		button.setStyle("-fx-border-color: GREEN;");
@@ -52,73 +42,26 @@ public class ScorePane {
 		
 		return button;
 	}
-	/**
-	 * 
-	 * creates text
-	 */
 	
 	private Text initializeText() {
-		
-		Text text = new Text("");
+		final Text text = new Text("");
 		text.setStyle("-fx-font: 24 arial;");
 		text.setFill(Color.DARKGREEN);
 		return text;
 	}
-	/**
-	 * 
-	 * stores values
-	 */
 	
-	private LinkedList<Integer> getText()//gets score and puts into array;
-	{
-		LinkedList<Integer> a = new LinkedList<Integer>();
-		FileReader fr = null;
-		BufferedReader br = new BufferedReader(fr);
-		try {
-			fr = new FileReader("HighScore.txt");
-			br = new BufferedReader(fr);
-			int score = Integer.parseInt(br.readLine());
-			a.add(score);
-			return a;
-		}	
-		catch (Exception e) {
-			
-			return null;
-		}
-		finally
-		{
-			try {
-				br.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-	/**
-	 * 
-	 * @param b
-	 * checks highest score
-	 */
-	public Integer checkText(LinkedList <Integer> b){
+	private Label initializeLabel() {		
+		final Label label = new Label();
+		label.setText("High Scores");
+		label.setStyle("-fx-font: 64 arial; -fx-font-weight: bold;");
+		label.setTextFill(Color.DARKGREEN);
+		label.setTextAlignment(TextAlignment.CENTER);
 		
-		for(int i = 0; i < b.size(); i ++)
-		{
-			int right = b.get(i + 1);
-			int left = b.get(i);
-			if (b.get(i) > b.get(i+1))
-			{
-				left = right;
-				right = left;
-			}
-		}
-		return 0;
-		
-	
+		return label;
 	}
 
 	private Scene initializeScene() {
-		final VBox root = new VBox(text, back);
+		final VBox root = new VBox(label, text, back);
 		root.setStyle("-fx-background-color: BLACK;");
 		root.setAlignment(Pos.CENTER);
 		root.setSpacing(40);
@@ -132,6 +75,17 @@ public class ScorePane {
 	
 	public Scene getHighScoreScene() {
 		return this.scene;
+	}
+	
+	// Sets the Text to display each score seperated by a new line
+	public void displayHighScores(LinkedList<Score> scores) {
+		// Build a single String which contains all of the scores seperated by a line break, then set the Text
+		final StringBuilder builder = new StringBuilder();
+		for (int n = 0; n < scores.size(); n++) {
+			final Score score = scores.get(n);
+			builder.append(String.format("%d: %d%n", n+1, score.getScore()));
+		}
+		text.setText(builder.toString());
 	}
 
 }

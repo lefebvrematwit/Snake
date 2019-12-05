@@ -208,7 +208,13 @@ public class SnakePane extends GridPane {
 
     // Ends the game
     private void endGame() {	
+    	// End the Timeline (game loop)
         timeline.stop();
+        
+        // Update the score label in the GameOverPane (displays the score)
+        gameOverPane.updateScoreLabel(snake);
+        
+        // Set the Stage to the GameOverPane's Scene
         stage.setScene(gameOverPane.getGameOverScene());
     }
 
