@@ -21,7 +21,7 @@ public class SnakeGame extends Application {
     @Override
     public void start(Stage stage) {
         // Create the Snake/Apple object which will be shared by multiple different panes
-        final Snake snake = new Snake(Color.GREEN);
+        final Snake snake = new Snake();
         final Apple apple = new Apple();
 
         // Load the high scores
