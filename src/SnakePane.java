@@ -141,8 +141,8 @@ public class SnakePane extends GridPane {
     public void setBoard(int rows) {
         // Set the previous fields for the snakes color/board size (note: this is done before resetting GameNodes and the board)
         this.previousSnakeColor = snake.getColor();
-        this.previousBoardSize = rows;
-  
+        this.previousBoardSize = rows; 
+        
     	// Reset the board
     	reset();
     	
@@ -218,7 +218,7 @@ public class SnakePane extends GridPane {
 
     // Checks if a Coordinate is on the game board
     private boolean isOnBoard(Coordinate coordinate) {
-        return coordinate.getX() >= 0 && coordinate.getX() < this.rows && coordinate.getY() >= 0 && coordinate.getY() < this.rows;
+        return coordinate.getX() >= 0 && coordinate.getX() < this.rows && coordinate.getY() >= 0 && coordinate.getY() < this.rows-1;
     }
 
     // updates the game board (i.e. - sets all the board pieces colors to the default then sets the sake
