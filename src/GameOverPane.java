@@ -144,29 +144,4 @@ public class GameOverPane {
 		}
 	}
 	
-	public static void main(String[] args) {
-		List<Integer> scores = new ArrayList<>();
-		for (int n = 10; n > 0; n--) {
-			scores.add(n*10);
-		}
-
-		int value = 12;
-		
-		int insert = scores.size();
-		while (insert > 0) {
-			Integer i = scores.get(insert-1);
-			if (i != null && i < value) {
-				insert--;
-				continue;
-			}
-			break;
-		}
-		
-		scores.add(insert, value);
-		if (scores.size() == 11) {
-			scores.remove(10);
-		}
-		System.out.println(scores.toString());
-	}
-	
 }
