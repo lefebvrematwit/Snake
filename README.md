@@ -3,9 +3,11 @@
 
 ## Getting Started 
 ### Install
-> List the steps on how to install your project
+1. Make sure you have the JavaFX library
+2. Click clone or download on this repository
+3. Import the project into an IDE of your choice (IntelliJ, Eclipse, etc.)
 ### Run 
-> List the steps on how to run your project
+1. Navigate to the file SnakeGame.java and run
 
 ## Features 
 > Classic snake (green snake, 25x25 board size)
