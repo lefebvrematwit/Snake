@@ -15,7 +15,7 @@
 - High Scores (tracks the top 10 scores!)
 
 ## Demo video 
-<link here>
+https://www.youtube.com/watch?v=p90S4Fhijj0&feature=em-share_video_user
 
 ## References 
 - https://docs.oracle.com/javase/8/javafx/api/toc.htm
