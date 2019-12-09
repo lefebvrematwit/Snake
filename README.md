@@ -15,14 +15,7 @@
 - High Scores (tracks the top 10 scores!)
 
 ## Demo video 
-Upload your demo video to youtube and put a link here. Basically, the video content is very much like the quick live demo of your product with the followings:
-1. Project description
-2. How to run the app
-3. Quick walkthrough of all the features of your app
-
-Make it short and interesting.
-Sample: https://www.youtube.com/watch?v=Pr-JMqTkdEM
-How to record your screen: https://www.techradar.com/how-to/record-your-screen
+<link here>
 
 ## References 
 - https://docs.oracle.com/javase/8/javafx/api/toc.htm
